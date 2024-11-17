@@ -27,8 +27,32 @@ class FavoriteRestaurantsPage extends StatelessWidget {
                 itemCount: homeController.favoriteRestaurants.length,
                 itemBuilder: (context, index) {
                   final restaurant = homeController.favoriteRestaurants[index];
-                  return Text(restaurant.name ??
-                      ''); // Reuse the same widget to display
+                  return Container(
+                    padding: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.all(7),
+                    decoration: const BoxDecoration(color: Colors.grey),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 100,
+                          decoration: const BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(blurRadius: 1),
+                            ],
+                          ),
+                          child: Image.asset(
+                            restaurant.image ?? '',
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        CommonText(
+                          text: restaurant.name ?? '',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ],
+                    ),
+                  ); // Reuse the same widget to display
                   // favorites
                 },
               )
